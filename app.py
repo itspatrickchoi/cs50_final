@@ -19,7 +19,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 
-class Final(db.model):
+class Final(db.Model):
     __tablename__ = 'final'
     id = db.Column(db.Integer, primary_key=True)
     customer = db.Column(db.String(200), unique=True)
@@ -46,7 +46,12 @@ def submit():
         print(customer, dealer, comments)
         if customer == '' or dealer == '':
             return render_template('index.html', message='Please enter required fields')
-        return render_template('success.html')
+        if db.session.query(Final).filter(Final.customer == customer).count() == 0:
+            data = Final(customer, dealer, comments)
+            db.session.add(data)
+            db.session.commit()
+            return render_template('success.html')
+        return render_template('index.html', message='You have already submitted before')
 
 
 if __name__ == '__main__':
