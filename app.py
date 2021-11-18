@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, flash, redirect, render_template, request, session
 from flask_sqlalchemy import SQLAlchemy
 from send_mail import send_mail
 
