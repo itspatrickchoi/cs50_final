@@ -38,6 +38,11 @@ def index():
     return render_template('index.html')
 
 
+@app.route('/curvaceous')
+def curvaceous():
+    return render_template('curvaceous.html')
+
+
 @ app.route('/submit', methods=['POST'])
 def submit():
     if request.method == 'POST':
@@ -54,6 +59,11 @@ def submit():
             send_mail(customer, dealer, comments)
             return render_template('success.html')
         return render_template('index.html', message='You have already submitted before')
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    return render_template('login.html')
 
 
 if __name__ == '__main__':
