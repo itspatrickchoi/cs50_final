@@ -7,16 +7,20 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      href="https://fonts.googleapis.com/css2?family=Rubik&display=swap"
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Prompt:wght@200&display=swap"
+    />
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
     />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/kute.js/2.0.0/kute.min.js"></script>
     <style>
       body {
         margin: 0;
-        font-family: "Prompt", sans-serif;
-        color: white;
-        background: #202731;
+        font-family: "Rubik", sans-serif;
+        color: #728ab7;
+        background: #f0f0f3;
         overflow-x: hidden;
       }
 
@@ -148,10 +152,43 @@
         width: 100%;
         background: url("./blobs.svg") no-repeat bottom / cover;
       }
+      .neuro {
+        box-shadow: -2.17893px -2.17893px 6.5368px #ffffff,
+          2.17893px 2.17893px 6.5368px rgba(174, 174, 192, 0.4);
+        border-radius: 21.3535px;
+      }
+      nav {
+        font-size: 15px;
+        font-weight: bold;
+      }
     </style>
     <title>Document</title>
   </head>
   <body>
+    <div class="border-b border-gray-300 py-4">
+      <div class="container mx-auto flex items-center">
+        <image src="static/images/logo.png" width="30" href="/" />
+        <nav class="pl-6">
+          <ul class="flex">
+            <li class="px-2">
+              <a href="#" class="px-2 py-2 hover:bg-gray-200 rounded-md neuro"
+                >About</a
+              >
+            </li>
+            <li class="px-2">
+              <a href="#" class="px-2 py-2 hover:bg-gray-200 rounded-md neuro"
+                >Dashboard</a
+              >
+            </li>
+            <li class="px-2">
+              <a href="#" class="px-2 py-2 hover:bg-gray-200 rounded-md neuro"
+                >Games</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
     <section class="blue">
       <h1>Nice Curves</h1>
       <p>
