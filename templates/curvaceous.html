@@ -161,43 +161,76 @@
         font-size: 15px;
         font-weight: bold;
       }
+      .hero {
+        background-image: url("static/images/hero.svg");
+        background-size: cover;
+        background-position: center;
+        z-index: -1;
+      }
+      header {
+        z-index: 0;
+        box-shadow: 0px 2px 5px rgb(119, 126, 141);
+      }
     </style>
     <title>Document</title>
   </head>
   <body>
-    <div class="border-b border-gray-300 py-4">
-      <div class="container mx-auto flex items-center">
+    <header class="border-b border-gray-300 py-4 px-4">
+      <div class="container mx-auto flex items-center justify-between">
         <image src="static/images/logo.png" width="30" href="/" />
         <nav class="pl-6">
           <ul class="flex">
             <li class="px-2">
-              <a href="#" class="px-2 py-2 hover:bg-gray-200 rounded-md neuro"
+              <a
+                href="#"
+                class="px-2 py-2 transition hover:bg-gray-200 rounded-md neuro"
                 >About</a
               >
             </li>
             <li class="px-2">
-              <a href="#" class="px-2 py-2 hover:bg-gray-200 rounded-md neuro"
+              <a
+                href="#"
+                class="px-2 py-2 transition hover:bg-gray-200 rounded-md neuro"
                 >Dashboard</a
               >
             </li>
             <li class="px-2">
-              <a href="#" class="px-2 py-2 hover:bg-gray-200 rounded-md neuro"
+              <a
+                href="#"
+                class="px-2 py-2 transition hover:bg-gray-200 rounded-md neuro"
                 >Games</a
+              >
+            </li>
+            <li class="px-2">
+              <a
+                href="#"
+                class="px-2 py-2 transition hover:bg-gray-200 rounded-md neuro"
+                >Log In</a
               >
             </li>
           </ul>
         </nav>
       </div>
-    </div>
-    <section class="blue">
-      <h1>Nice Curves</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
-        distinctio nobis mollitia voluptatum! Dolorum quidem similique,
-        voluptatum aspernatur totam illum ea magnam porro ex illo maiores fuga
-        consectetur earum quo?
-      </p>
-      <div class="curve"></div>
+    </header>
+    <section class="hero py-24">
+      <div class="container mx-auto flex items-center justify-between relative">
+        <h1
+          class="
+            text-6xl
+            font-medium
+            relative
+            font-medium
+            text-transparent
+            bg-clip-text bg-gradient-to-r
+            from-green-400
+            to-purple-400
+            block
+            text-center
+          "
+        >
+          Say hi to your new productivity dashboard!
+        </h1>
+      </div>
     </section>
     <section>
       <h1>Nice Curves</h1>
