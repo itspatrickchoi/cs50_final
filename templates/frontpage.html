@@ -29,93 +29,17 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        min-height: 400px;
+        min-height: 200px;
         padding: 100px 20vw;
       }
 
       .blue {
         background: #0066ff;
       }
-      .red {
-        background: #dd3f31;
-      }
-      .pink {
-        background: #ff0066;
-      }
-      .dark {
-        background: #0f0f10;
-      }
-      .curve {
-        position: absolute;
-        height: 225px;
-        width: 100%;
-        bottom: 0;
-      }
-      .curve::before {
-        content: "";
-        display: block;
-        position: absolute;
-        border-radius: 100% 50%;
-        width: 55%;
-        height: 100%;
-        background-color: #202731;
-        transform: translate(85%, 60%);
-      }
-      .curve::after {
-        content: "";
-        display: block;
-        position: absolute;
-        border-radius: 100% 50%;
-        width: 55%;
-        height: 100%;
-        background-color: #0066ff;
-        transform: translate(-4%, 40%);
-        z-index: -1;
-      }
-      .bubble::after {
-        content: "";
-        border-top-left-radius: 50% 100%;
-        border-top-right-radius: 50% 100%;
-        position: absolute;
-        bottom: 0;
-        height: 85%;
-        width: 100%;
-        background-color: #0f0f10;
-        z-index: -1;
-      }
-      .wave {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        overflow: hidden;
-        line-height: 0;
-      }
-      .wave svg {
-        position: relative;
-        display: block;
-        width: calc(100% + 1.3px);
-        height: 127px;
-      }
 
-      .wave .shape-fill {
-        fill: #1d1d1d;
-      }
-
-      /** For tablet devices **/
-      @media (min-width: 768px) and (max-width: 1023px) {
-        .wave svg {
-          width: calc(100% + 1.3px);
-          height: 206px;
-        }
-      }
-
-      /** For mobile devices **/
-      @media (max-width: 767px) {
-        .wave svg {
-          width: calc(107% + 1.3px);
-          height: 102px;
-        }
+      .light-blue {
+        background: #728ab7;
+        color: #f0f0f3;
       }
 
       .spacer {
@@ -124,6 +48,7 @@
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
+        border: 0;
       }
       .layer1 {
         background-image: url("static/images/layer1.svg");
@@ -131,8 +56,8 @@
       .layer2 {
         background-image: url("static/images/layer2.svg");
       }
-      .layer2-2 {
-        background-image: url("static/images/layer2-2.svg");
+      .layer-white {
+        background-image: url("static/images/layer-white.svg");
       }
       .layer3 {
         background-image: url("static/images/layer3.svg");
@@ -172,7 +97,7 @@
         box-shadow: 0px 2px 5px rgb(119, 126, 141);
       }
     </style>
-    <title>Document</title>
+    <title>Take back your focus! | PC Dash</title>
   </head>
   <body>
     <header class="border-b border-gray-300 py-4 px-4">
@@ -203,7 +128,7 @@
             </li>
             <li class="px-2">
               <a
-                href="#"
+                href="/login"
                 class="px-2 py-2 transition hover:bg-gray-200 rounded-md neuro"
                 >Log In</a
               >
@@ -232,94 +157,43 @@
         </h1>
       </div>
     </section>
-    <section>
-      <h1>Nice Curves</h1>
-      <p>
-        Cum sint possimus laborum impedit vel dolore inventore optio libero
-        consequuntur ab modi, quisquam et consequatur eveniet unde ex quia, iste
-        provident in amet iusto officiis repellat? Quasi, pariatur porro.
-      </p>
-    </section>
-    <section class="bubble">
-      <h1>Nice Curves</h1>
-      <p>
-        Rem voluptate repellat nobis minima optio veritatis aliquam accusamus
-        corrupti sapiente? Recusandae cum vero voluptatibus fugiat, eligendi
-        nobis delectus dignissimos tempore facilis cumque laudantium assumenda
-        fugit sunt rem possimus soluta.
-      </p>
-    </section>
-    <section class="dark">
-      <h1>Nice Curves</h1>
-      <p>
-        Molestiae officiis quas adipisci nulla sapiente magni, ipsam itaque
-        eveniet quaerat laborum, suscipit mollitia quibusdam tempora incidunt
-        commodi dolor animi culpa. Enim nemo harum minima tempore perferendis
-        praesentium amet in.
-      </p>
-    </section>
-    <section class="red">
-      <h1>Nice Curves</h1>
-      <p>
-        Unde repellendus neque quas? Placeat harum adipisci ad repellat! Animi
-        odit saepe laboriosam inventore autem sint, magni sed officiis ad
-        facilis? Rerum repellendus error sed rem natus deleniti recusandae ab?
-      </p>
-      <div class="wave">
-        <svg
-          data-name="Layer 1"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 1200 120"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
-            class="shape-fill"
-          ></path>
-        </svg>
-      </div>
-    </section>
-
-    <div class="spacer layer1"></div>
-
-    <section>
-      <h1>Nice Curves</h1>
-      <p>
-        Possimus amet aperiam quasi neque, vero unde laborum cum nisi! Aut non
-        ea, tempora reiciendis fugit totam autem omnis architecto doloribus nemo
-        odio reprehenderit aspernatur temporibus saepe ex. Corrupti, qui.
-      </p>
-    </section>
-
-    <div class="spacer layer2"></div>
-    <div class="spacer layer2-2"></div>
-
-    <div class="spacer layer3 flip"></div>
-    <section class="blue">
+    <div class="spacer layer-white"></div>
+    <section class="light-blue">
       <div class="blob-content">
-        <h1>Nice Curves</h1>
-        <p>
-          Repellendus quasi, quaerat asperiores error omnis repudiandae magnam
-          pariatur? Ea nesciunt officiis consequuntur vitae beatae tempore quae
-          sunt distinctio, debitis expedita asperiores nihil error iure illum
-          labore optio. Itaque, nostrum?
-        </p>
+        <h1
+          class="
+            text-5xl
+            font-medium
+            relative
+            font-medium
+            text-transparent
+            bg-clip-text bg-gradient-to-r
+            from-green-400
+            to-purple-400
+            block
+            text-center
+            pb-7
+          "
+        >
+          Tired of unfocused days?
+        </h1>
       </div>
       <svg
         class="blob-motion"
         id="visual"
         viewBox="0 0 960 300"
         width="960"
-        height="300"
+        height="200"
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
         version="1.1"
+        style="margin-top: -30px"
       >
         <g transform="translate(468.05207425217833 163.59170264309697)">
           <path
             id="blob1"
             d="M66.9 -70.3C88.6 -45.3 109.3 -22.6 107.5 -1.8C105.8 19.1 81.5 38.2 59.9 55C38.2 71.9 19.1 86.4 -6.5 92.9C-32.1 99.4 -64.1 97.8 -76.6 80.9C-89.1 64.1 -82.1 32.1 -78.3 3.8C-74.5 -24.5 -74 -49 -61.5 -74C-49 -99 -24.5 -124.5 -0.9 -123.6C22.6 -122.6 45.3 -95.3 66.9 -70.3"
-            fill="#0f4fae"
+            fill="#5c79ae"
           ></path>
         </g>
         <g
@@ -329,7 +203,7 @@
           <path
             id="blob2"
             d="M57.5 -58.9C79.7 -35.4 106.3 -17.7 110 3.7C113.7 25 94.3 50 72.1 66.5C50 83 25 91 -5.2 96.2C-35.4 101.4 -70.7 103.7 -94.2 87.2C-117.7 70.7 -129.4 35.4 -122 7.3C-114.7 -20.7 -88.5 -41.5 -65 -65C-41.5 -88.5 -20.7 -114.7 -1.5 -113.2C17.7 -111.7 35.4 -82.4 57.5 -58.9"
-            fill="#0f4fae"
+            fill="#5c79ae"
           ></path>
         </g>
       </svg>
@@ -342,15 +216,34 @@
         ).start();
       </script>
     </section>
-    <div class="spacer layer3"></div>
+
+    <div class="spacer layer-white flip"></div>
     <section>
-      <h1>Nice Curves</h1>
-      <p>
-        Dignissimos repudiandae aperiam tempora labore, dolorum voluptatibus
-        numquam placeat blanditiis. Architecto obcaecati ratione quos natus
-        pariatur at laborum voluptatem eos, explicabo nesciunt totam velit
-        dignissimos nam enim voluptas ullam rerum?
+      <h1
+        class="
+          text-4xl
+          font-medium
+          relative
+          font-medium
+          text-transparent
+          bg-clip-text bg-gradient-to-r
+          from-green-400
+          to-purple-400
+          block
+          text-center
+          pb-7
+        "
+      >
+        Well, don't you worry!<br />
+        The PC Dash will get you right back on track, forever!
+      </h1>
+      <p class="text-xl text-center">
+        With its intuitive design, you will feel right at hoome when you set
+        your priorities for your day or week or whatever time period you want.
+        With all the essential features in your hands there won't ever be a day
+        when you feel lost.
       </p>
     </section>
+    <div class="spacer layer-white"></div>
   </body>
 </html>

@@ -38,9 +38,9 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/curvaceous')
+@app.route('/frontpage')
 def curvaceous():
-    return render_template('curvaceous.html')
+    return render_template('frontpage.html')
 
 
 @ app.route('/submit', methods=['POST'])
@@ -63,7 +63,11 @@ def submit():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    return render_template('login.html')
+    if request.method == 'POST':
+        # TODO
+        return render_template('frontpage.html')
+    else:
+        return render_template('login.html')
 
 
 if __name__ == '__main__':
