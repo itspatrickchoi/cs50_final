@@ -1,249 +1,110 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Rubik&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
-      rel="stylesheet"
-    />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/kute.js/2.0.0/kute.min.js"></script>
-    <style>
-      body {
-        margin: 0;
-        font-family: "Rubik", sans-serif;
-        color: #728ab7;
-        background: #f0f0f3;
-        overflow-x: hidden;
-      }
+{% extends "layout.html" %} {% block title %} Take back your focus! | PC Dash {%
+endblock %} {% block main %}
+<section class="hero py-24">
+  <div class="container mx-auto flex items-center justify-between relative">
+    <h1
+      class="
+        text-6xl
+        font-medium
+        relative
+        font-medium
+        text-transparent
+        bg-clip-text bg-gradient-to-r
+        from-green-400
+        to-purple-400
+        block
+        text-center
+      "
+    >
+      Say hi to your new productivity dashboard!
+    </h1>
+  </div>
+</section>
+<div class="spacer layer-white"></div>
+<section class="light-blue">
+  <div class="blob-content">
+    <h1
+      class="
+        text-5xl
+        font-medium
+        relative
+        font-medium
+        text-transparent
+        bg-clip-text bg-gradient-to-r
+        from-green-400
+        to-purple-400
+        block
+        text-center
+        pb-7
+      "
+    >
+      Tired of unfocused days?
+    </h1>
+  </div>
+  <svg
+    class="blob-motion"
+    id="visual"
+    viewBox="0 0 960 300"
+    width="960"
+    height="200"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="1.1"
+    style="margin-top: -30px"
+  >
+    <g transform="translate(468.05207425217833 163.59170264309697)">
+      <path
+        id="blob1"
+        d="M66.9 -70.3C88.6 -45.3 109.3 -22.6 107.5 -1.8C105.8 19.1 81.5 38.2 59.9 55C38.2 71.9 19.1 86.4 -6.5 92.9C-32.1 99.4 -64.1 97.8 -76.6 80.9C-89.1 64.1 -82.1 32.1 -78.3 3.8C-74.5 -24.5 -74 -49 -61.5 -74C-49 -99 -24.5 -124.5 -0.9 -123.6C22.6 -122.6 45.3 -95.3 66.9 -70.3"
+        fill="#5c79ae"
+      ></path>
+    </g>
+    <g
+      transform="translate(486.87550722457667 156.61104340521246)"
+      style="visibility: hidden"
+    >
+      <path
+        id="blob2"
+        d="M57.5 -58.9C79.7 -35.4 106.3 -17.7 110 3.7C113.7 25 94.3 50 72.1 66.5C50 83 25 91 -5.2 96.2C-35.4 101.4 -70.7 103.7 -94.2 87.2C-117.7 70.7 -129.4 35.4 -122 7.3C-114.7 -20.7 -88.5 -41.5 -65 -65C-41.5 -88.5 -20.7 -114.7 -1.5 -113.2C17.7 -111.7 35.4 -82.4 57.5 -58.9"
+        fill="#5c79ae"
+      ></path>
+    </g>
+  </svg>
+  <script>
+    const tween = KUTE.fromTo(
+      "#blob1",
+      { path: "#blob1" },
+      { path: "#blob2" },
+      { repeat: 999, duration: 3000, yoyo: true }
+    ).start();
+  </script>
+</section>
 
-      section {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        min-height: 200px;
-        padding: 100px 20vw;
-      }
-
-      .blue {
-        background: #0066ff;
-      }
-
-      .light-blue {
-        background: #728ab7;
-        color: #f0f0f3;
-      }
-
-      .spacer {
-        aspect-ratio: 960/300;
-        width: 100%;
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-        border: 0;
-      }
-      .layer1 {
-        background-image: url("static/images/layer1.svg");
-      }
-      .layer2 {
-        background-image: url("static/images/layer2.svg");
-      }
-      .layer-white {
-        background-image: url("static/images/layer-white.svg");
-      }
-      .layer3 {
-        background-image: url("static/images/layer3.svg");
-      }
-      .flip {
-        transform: rotate(180deg);
-      }
-      .blob-motion {
-        position: absolute;
-        transform: translateY(-20%);
-        z-index: 0;
-      }
-      .blob-content {
-        z-index: 1;
-      }
-      .blobs {
-        width: 100%;
-        background: url("./blobs.svg") no-repeat bottom / cover;
-      }
-      .neuro {
-        box-shadow: -2.17893px -2.17893px 6.5368px #ffffff,
-          2.17893px 2.17893px 6.5368px rgba(174, 174, 192, 0.4);
-        border-radius: 21.3535px;
-      }
-      nav {
-        font-size: 15px;
-        font-weight: bold;
-      }
-      .hero {
-        background-image: url("static/images/hero.svg");
-        background-size: cover;
-        background-position: center;
-        z-index: -1;
-      }
-      header {
-        z-index: 0;
-        box-shadow: 0px 2px 5px rgb(119, 126, 141);
-      }
-    </style>
-    <title>Take back your focus! | PC Dash</title>
-  </head>
-  <body>
-    <header class="border-b border-gray-300 py-4 px-4">
-      <div class="container mx-auto flex items-center justify-between">
-        <image src="static/images/logo.png" width="30" href="/" />
-        <nav class="pl-6">
-          <ul class="flex">
-            <li class="px-2">
-              <a
-                href="#"
-                class="px-2 py-2 transition hover:bg-gray-200 rounded-md neuro"
-                >About</a
-              >
-            </li>
-            <li class="px-2">
-              <a
-                href="#"
-                class="px-2 py-2 transition hover:bg-gray-200 rounded-md neuro"
-                >Dashboard</a
-              >
-            </li>
-            <li class="px-2">
-              <a
-                href="#"
-                class="px-2 py-2 transition hover:bg-gray-200 rounded-md neuro"
-                >Games</a
-              >
-            </li>
-            <li class="px-2">
-              <a
-                href="/login"
-                class="px-2 py-2 transition hover:bg-gray-200 rounded-md neuro"
-                >Log In</a
-              >
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </header>
-    <section class="hero py-24">
-      <div class="container mx-auto flex items-center justify-between relative">
-        <h1
-          class="
-            text-6xl
-            font-medium
-            relative
-            font-medium
-            text-transparent
-            bg-clip-text bg-gradient-to-r
-            from-green-400
-            to-purple-400
-            block
-            text-center
-          "
-        >
-          Say hi to your new productivity dashboard!
-        </h1>
-      </div>
-    </section>
-    <div class="spacer layer-white"></div>
-    <section class="light-blue">
-      <div class="blob-content">
-        <h1
-          class="
-            text-5xl
-            font-medium
-            relative
-            font-medium
-            text-transparent
-            bg-clip-text bg-gradient-to-r
-            from-green-400
-            to-purple-400
-            block
-            text-center
-            pb-7
-          "
-        >
-          Tired of unfocused days?
-        </h1>
-      </div>
-      <svg
-        class="blob-motion"
-        id="visual"
-        viewBox="0 0 960 300"
-        width="960"
-        height="200"
-        xmlns="http://www.w3.org/2000/svg"
-        xmlns:xlink="http://www.w3.org/1999/xlink"
-        version="1.1"
-        style="margin-top: -30px"
-      >
-        <g transform="translate(468.05207425217833 163.59170264309697)">
-          <path
-            id="blob1"
-            d="M66.9 -70.3C88.6 -45.3 109.3 -22.6 107.5 -1.8C105.8 19.1 81.5 38.2 59.9 55C38.2 71.9 19.1 86.4 -6.5 92.9C-32.1 99.4 -64.1 97.8 -76.6 80.9C-89.1 64.1 -82.1 32.1 -78.3 3.8C-74.5 -24.5 -74 -49 -61.5 -74C-49 -99 -24.5 -124.5 -0.9 -123.6C22.6 -122.6 45.3 -95.3 66.9 -70.3"
-            fill="#5c79ae"
-          ></path>
-        </g>
-        <g
-          transform="translate(486.87550722457667 156.61104340521246)"
-          style="visibility: hidden"
-        >
-          <path
-            id="blob2"
-            d="M57.5 -58.9C79.7 -35.4 106.3 -17.7 110 3.7C113.7 25 94.3 50 72.1 66.5C50 83 25 91 -5.2 96.2C-35.4 101.4 -70.7 103.7 -94.2 87.2C-117.7 70.7 -129.4 35.4 -122 7.3C-114.7 -20.7 -88.5 -41.5 -65 -65C-41.5 -88.5 -20.7 -114.7 -1.5 -113.2C17.7 -111.7 35.4 -82.4 57.5 -58.9"
-            fill="#5c79ae"
-          ></path>
-        </g>
-      </svg>
-      <script>
-        const tween = KUTE.fromTo(
-          "#blob1",
-          { path: "#blob1" },
-          { path: "#blob2" },
-          { repeat: 999, duration: 3000, yoyo: true }
-        ).start();
-      </script>
-    </section>
-
-    <div class="spacer layer-white flip"></div>
-    <section>
-      <h1
-        class="
-          text-4xl
-          font-medium
-          relative
-          font-medium
-          text-transparent
-          bg-clip-text bg-gradient-to-r
-          from-green-400
-          to-purple-400
-          block
-          text-center
-          pb-7
-        "
-      >
-        Well, don't you worry!<br />
-        The PC Dash will get you right back on track, forever!
-      </h1>
-      <p class="text-xl text-center">
-        With its intuitive design, you will feel right at hoome when you set
-        your priorities for your day or week or whatever time period you want.
-        With all the essential features in your hands there won't ever be a day
-        when you feel lost.
-      </p>
-    </section>
-    <div class="spacer layer-white"></div>
-  </body>
-</html>
+<div class="spacer layer-white flip"></div>
+<section>
+  <h1
+    class="
+      text-4xl
+      font-medium
+      relative
+      font-medium
+      text-transparent
+      bg-clip-text bg-gradient-to-r
+      from-green-400
+      to-purple-400
+      block
+      text-center
+      pb-7
+    "
+  >
+    Well, don't you worry!<br />
+    The PC Dash will get you right back on track, forever!
+  </h1>
+  <p class="text-xl text-center">
+    With its intuitive design, you will feel right at home when you set your
+    priorities for your day or week or whatever time period you want. With all
+    the essential features in your hands there won't ever be a day when you feel
+    lost.
+  </p>
+</section>
+{% endblock %}

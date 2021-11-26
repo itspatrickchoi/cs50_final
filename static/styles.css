@@ -1,48 +1,71 @@
-nav .navbar-brand {
-  /* size for brand */
-  font-size: xx-large;
-}
-
-/* Colors for brand */
-nav .navbar-brand .blue {
-  color: #537fbe;
-}
-nav .navbar-brand .red {
-  color: #ea433b;
-}
-nav .navbar-brand .yellow {
-  color: #f5b82e;
-}
-nav .navbar-brand .green {
-  color: #2e944b;
-}
-
-main .form-control {
-  /* Center form controls */
-  display: inline-block;
-
-  /* Override Bootstrap's 100% width for form controls */
-  width: auto;
-}
-
-main {
-  /* Scroll horizontally as needed */
-  overflow-x: auto;
-
-  /* Center contents */
+body {
+  margin: 0;
+  font-family: "Rubik", sans-serif;
+  color: #728ab7;
+  background: #f0f0f3;
+  overflow-x: hidden;
   text-align: center;
 }
 
-main img {
-  /* Constrain images on small screens */
-  max-width: 100%;
+section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 200px;
+  padding: 100px 20vw;
 }
 
-/* MY ADDED STUFF */
-main table {
-  text-align: left;
+.blue {
+  background: #0066ff;
 }
 
-.dropdown {
-  padding-left: 5px;
+.light-blue {
+  background: #728ab7;
+  color: #f0f0f3;
+}
+
+.spacer {
+  aspect-ratio: 960/300;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border: 0;
+}
+
+.layer-white {
+  background-image: url("images/layer-white.svg");
+}
+
+.flip {
+  transform: rotate(180deg);
+}
+.blob-motion {
+  position: absolute;
+  transform: translateY(-20%);
+  z-index: 0;
+}
+.blob-content {
+  z-index: 1;
+}
+
+.neuro {
+  box-shadow: -2.17893px -2.17893px 6.5368px #ffffff,
+    2.17893px 2.17893px 6.5368px rgba(174, 174, 192, 0.4);
+  border-radius: 21.3535px;
+}
+nav {
+  font-size: 15px;
+  font-weight: bold;
+}
+.hero {
+  background-image: url("images/hero.svg");
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+}
+header {
+  z-index: 0;
+  box-shadow: 0px 2px 5px rgb(119, 126, 141);
 }

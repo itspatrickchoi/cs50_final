@@ -15,6 +15,6 @@
 - haikei.app
 - KUTE.js
 - tailwind.css
-- bootstrap
+- (bootstrap)
 - Figma
 - ...

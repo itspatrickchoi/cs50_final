@@ -2,6 +2,8 @@ from flask import Flask, flash, redirect, render_template, request, session
 from flask_sqlalchemy import SQLAlchemy
 from send_mail import send_mail
 
+from helpers import apology, login_required
+
 app = Flask(__name__)
 
 ENV = 'dev'
@@ -61,13 +63,32 @@ def submit():
         return render_template('index.html', message='You have already submitted before')
 
 
-@app.route('/login', methods=['GET', 'POST'])
-def login():
+@app.route('/signin', methods=['GET', 'POST'])
+def signin():
     if request.method == 'POST':
         # TODO
         return render_template('frontpage.html')
     else:
-        return render_template('login.html')
+        return render_template('signin.html')
+
+
+@app.route('/signup', methods=['GET', 'POST'])
+def signup():
+    # TODO
+    # Forget any user_id
+
+    if request.method == 'POST':
+        # Ensuring of user input is given by field setup
+        email = request.form.get('email')
+        password = request.form.get('password')
+        confirmation = request.form.get('confirmation')
+
+        # Ensure password confirmation
+        if password != confirmation:
+            return apology("password confirmation doesn't match", 400)
+        return render_template('frontpage.html')
+    else:
+        return render_template('signup.html')
 
 
 if __name__ == '__main__':
