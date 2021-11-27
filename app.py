@@ -2,7 +2,7 @@ from flask import Flask, flash, redirect, render_template, request, session
 from flask_sqlalchemy import SQLAlchemy
 from send_mail import send_mail
 
-from helpers import apology, login_required
+from helpers import apology, login_required, success
 from werkzeug.security import check_password_hash, generate_password_hash
 
 app = Flask(__name__)
@@ -63,6 +63,7 @@ def submit():
             data = Final(customer, dealer, comments)
             db.session.add(data)
             db.session.commit()
+            # DON'T FORGET, before commit() gets error as not-null violation of id column. Config in pgadmin4 to "Type: IDENTITY" and config Increment
             send_mail(customer, dealer, comments)
             return render_template('success.html')
         return render_template('index.html', message='You have already submitted before')
@@ -89,24 +90,26 @@ def signup():
         email = request.form.get('email')
         password = request.form.get('password')
         confirmation = request.form.get('confirmation')
-
+        print(username, email, password, confirmation)
         # Ensure password confirmation
         if password != confirmation:
             return apology("password confirmation doesn't match", 400)
         hash = generate_password_hash(
             password, method='pbkdf2:sha256', salt_length=8)
         score = 1000
+        print(hash, score)
 
         if db.session.query(Users).filter(Users.username == username).count() != 0:
             return apology('this username already exists', 400)
         elif db.session.query(Users).filter(Users.email == email).count() != 0:
             return apology('this email was already used', 400)
         else:
+            print("hello")
             data = Users(username, email, hash, score)
             db.session.add(data)
             db.session.commit()
             send_mail(username, email, score)
-            return render_template('success.html')
+            return success("Your account has been created!", "Congratulations!")
 
         return redirect('/')
     else:

@@ -33,3 +33,21 @@ def login_required(f):
             return redirect("/frontpage")
         return f(*args, **kwargs)
     return decorated_function
+
+# Copy of apology() made for general generating message like for congrats on registering
+
+
+def success(message, code=400):
+    """Render message as a congrats to success to user."""
+    theme = session.get('theme')
+
+    def escape(s):
+        """
+        Escape special characters.
+        https://github.com/jacebrowning/memegen#special-characters
+        """
+        for old, new in [("-", "--"), (" ", "-"), ("_", "__"), ("?", "~q"),
+                         ("%", "~p"), ("#", "~h"), ("/", "~s"), ("\"", "''")]:
+            s = s.replace(old, new)
+        return s
+    return render_template("success.html", top=code, bottom=escape(message), theme=theme), code
