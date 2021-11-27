@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from send_mail import send_mail
 
 from helpers import apology, login_required
+from werkzeug.security import check_password_hash, generate_password_hash
 
 app = Flask(__name__)
 
@@ -20,22 +21,26 @@ else:
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
+#conn = db.connect()
 
 
-class Final(db.Model):
-    __tablename__ = 'final'
+class Users(db.Model):
+    __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
-    customer = db.Column(db.String(200), unique=True)
-    dealer = db.Column(db.String(200))
-    comments = db.Column(db.Text())
+    username = db.Column(db.String(200), unique=True)
+    email = db.Column(db.String(200), unique=True)
+    hash = db.Column(db.String(200), unique=True)
+    score = db.Column(db.Integer, default=1000)
 
-    def __init__(self, customer, dealer, comments):
-        self.customer = customer
-        self.dealer = dealer
-        self.comments = comments
+    def __init__(self, username, email, hash, score):
+        self.username = username
+        self.email = email
+        self.hash = hash
+        self.score = score
 
 
 @ app.route('/')
+@login_required
 def index():
     return render_template('index.html')
 
@@ -67,7 +72,7 @@ def submit():
 def signin():
     if request.method == 'POST':
         # TODO
-        return render_template('frontpage.html')
+        return redirect('/')
     else:
         return render_template('signin.html')
 
@@ -76,9 +81,11 @@ def signin():
 def signup():
     # TODO
     # Forget any user_id
+    # session.clear()
 
     if request.method == 'POST':
         # Ensuring of user input is given by field setup
+        username = request.form.get('username')
         email = request.form.get('email')
         password = request.form.get('password')
         confirmation = request.form.get('confirmation')
@@ -86,7 +93,22 @@ def signup():
         # Ensure password confirmation
         if password != confirmation:
             return apology("password confirmation doesn't match", 400)
-        return render_template('frontpage.html')
+        hash = generate_password_hash(
+            password, method='pbkdf2:sha256', salt_length=8)
+        score = 1000
+
+        if db.session.query(Users).filter(Users.username == username).count() != 0:
+            return apology('this username already exists', 400)
+        elif db.session.query(Users).filter(Users.email == email).count() != 0:
+            return apology('this email was already used', 400)
+        else:
+            data = Users(username, email, hash, score)
+            db.session.add(data)
+            db.session.commit()
+            send_mail(username, email, score)
+            return render_template('success.html')
+
+        return redirect('/')
     else:
         return render_template('signup.html')
 

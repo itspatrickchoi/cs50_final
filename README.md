@@ -8,8 +8,9 @@
 - Curvaceous Design (Section Transitions, SVG Morph) https://www.youtube.com/watch?v=lPJVi797Uy0
 - From Figma to Code https://www.youtube.com/watch?v=lPJVi797Uy0
 
-### Products/Frameworks
+### Products/Frameworks/Libraries
 
+- Flask-SQLAlchemy
 - pgadmin4
 - mailtrap.io
 - haikei.app

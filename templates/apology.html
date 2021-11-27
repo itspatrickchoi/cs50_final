@@ -1,9 +1,11 @@
 {% extends "layout.html" %} {% block title %} Apology {% endblock %} {% block
 main %}
-<img
-  alt="{{ top }}"
-  class="mt-8"
-  src="http://memegen.link/custom/{{ top | urlencode }}/{{ bottom | urlencode }}.jpg?alt=https://i.imgur.com/CsCgN7Ll.png"
-  title="{{ top }}"
-/>
+<div class="container mx-auto flex items-center justify-center">
+  <img
+    alt="{{ top }}"
+    class="mt-8"
+    src="http://memegen.link/custom/{{ top | urlencode }}/{{ bottom | urlencode }}.jpg?alt=https://i.imgur.com/8nLFCVP.png"
+    title="{{ top }}"
+  />
+</div>
 {% endblock %}

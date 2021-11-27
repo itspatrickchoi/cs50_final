@@ -27,12 +27,14 @@ main %}
       <input type="hidden" name="remember" value="true" />
       <div class="rounded-md shadow-sm -space-y-px">
         <div>
-          <label for="email-address" class="sr-only">Artificial Email</label>
+          <label for="username-or-email-address" class="sr-only"
+            >Username or Email</label
+          >
           <input
-            id="email-address"
-            name="email"
-            type="email"
-            autocomplete="email"
+            id="username-or-email-address"
+            name="username-or-email-address"
+            type="text"
+            autocomplete="text"
             required
             class="
               appearance-none
@@ -52,7 +54,7 @@ main %}
               focus:z-10
               sm:text-sm
             "
-            placeholder="Artificial Email"
+            placeholder="Username or Email"
           />
         </div>
         <div>
