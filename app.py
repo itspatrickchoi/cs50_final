@@ -72,8 +72,30 @@ def submit():
 @app.route('/signin', methods=['GET', 'POST'])
 def signin():
     if request.method == 'POST':
-        # TODO
-        return redirect('/')
+        # only lowercase the input when comparing emails in if-statements
+        username_email = request.form.get('username-or-email-address')
+        password = request.form.get('password')
+        # if invalid username
+        if db.session.query(Users).filter(Users.username == username_email).count() == 0:
+            # if invalid email, return apology
+            if db.session.query(Users).filter(Users.email == username_email.lower()).count() == 0:
+                return apology("Invalid username or email address", 403)
+            # if correct email, check password
+            else:
+                hash = db.session.query(Users).filter(
+                    Users.email == username_email.lower()).first().hash
+                if check_password_hash(hash, password):
+                    return redirect('/')
+                else:
+                    return apology("Invalid password", 403)
+        # if correct username, check password
+        else:
+            hash = db.session.query(Users).filter(
+                Users.username == username_email).first().hash
+            if check_password_hash(hash, password):
+                return redirect('/')
+            else:
+                return apology("Invalid password", 403)
     else:
         return render_template('signin.html')
 
@@ -87,7 +109,7 @@ def signup():
     if request.method == 'POST':
         # Ensuring of user input is given by field setup
         username = request.form.get('username')
-        email = request.form.get('email')
+        email = request.form.get('email').lower()
         password = request.form.get('password')
         confirmation = request.form.get('confirmation')
         print(username, email, password, confirmation)
