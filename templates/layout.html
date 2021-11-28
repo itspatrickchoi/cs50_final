@@ -38,6 +38,7 @@
     <header class="border-b border-gray-300 py-4 px-4">
       <div class="container mx-auto flex items-center justify-between">
         <a href="/"><img src="static/images/logo.png" width="30" /></a>
+        {% if session.user_id %}
         <nav class="pl-6">
           <ul class="flex">
             <li class="px-2">
@@ -49,14 +50,47 @@
             </li>
             <li class="px-2">
               <a
-                href="#"
+                href="/"
                 class="px-2 py-2 transition hover:bg-gray-200 rounded-md neuro"
                 >Dashboard</a
               >
             </li>
             <li class="px-2">
               <a
-                href="#"
+                href="#games"
+                class="px-2 py-2 transition hover:bg-gray-200 rounded-md neuro"
+                >Games</a
+              >
+            </li>
+            <li class="px-2">
+              <a
+                href="/signout"
+                class="px-2 py-2 transition hover:bg-gray-200 rounded-md neuro"
+                >Sign Out</a
+              >
+            </li>
+          </ul>
+        </nav>
+        {% else %}
+        <nav class="pl-6">
+          <ul class="flex">
+            <li class="px-2">
+              <a
+                href="#about"
+                class="px-2 py-2 transition hover:bg-gray-200 rounded-md neuro"
+                >About</a
+              >
+            </li>
+            <li class="px-2">
+              <a
+                href="#dashboard"
+                class="px-2 py-2 transition hover:bg-gray-200 rounded-md neuro"
+                >Dashboard</a
+              >
+            </li>
+            <li class="px-2">
+              <a
+                href="#games"
                 class="px-2 py-2 transition hover:bg-gray-200 rounded-md neuro"
                 >Games</a
               >
@@ -70,6 +104,7 @@
             </li>
           </ul>
         </nav>
+        {% endif %}
       </div>
     </header>
     {% block main %}{% endblock %}

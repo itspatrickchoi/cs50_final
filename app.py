@@ -4,6 +4,7 @@ from send_mail import send_mail
 
 from helpers import apology, login_required, success
 from werkzeug.security import check_password_hash, generate_password_hash
+from werkzeug.exceptions import default_exceptions, HTTPException, InternalServerError
 
 app = Flask(__name__)
 
@@ -19,6 +20,9 @@ else:
     app.config['SQLALCHEMY_DATABASE_URI'] = ''
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+# set secret key for working with sessions
+app.secret_key = "sdfjawoi39439435wief"
 
 db = SQLAlchemy(app)
 #conn = db.connect()
@@ -42,7 +46,10 @@ class Users(db.Model):
 @ app.route('/')
 @login_required
 def index():
-    return render_template('index.html')
+    if request.method == 'POST':
+        return apology("How did you do that??", 400)
+    else:
+        return render_template('index.html')
 
 
 @app.route('/frontpage')
@@ -71,6 +78,9 @@ def submit():
 
 @app.route('/signin', methods=['GET', 'POST'])
 def signin():
+    # Forget any user_id
+    session.clear()
+
     if request.method == 'POST':
         # only lowercase the input when comparing emails in if-statements
         username_email = request.form.get('username-or-email-address')
@@ -82,17 +92,23 @@ def signin():
                 return apology("Invalid username or email address", 403)
             # if correct email, check password
             else:
-                hash = db.session.query(Users).filter(
-                    Users.email == username_email.lower()).first().hash
-                if check_password_hash(hash, password):
+                user = db.session.query(Users).filter(
+                    Users.email == username_email.lower()).first()
+                if check_password_hash(user.hash, password):
+                    # Remember which user has logged in
+                    session["user_id"] = user.id
+                    print("User logged in: " + str(session["user_id"]))
                     return redirect('/')
                 else:
                     return apology("Invalid password", 403)
         # if correct username, check password
         else:
-            hash = db.session.query(Users).filter(
-                Users.username == username_email).first().hash
-            if check_password_hash(hash, password):
+            user = db.session.query(Users).filter(
+                Users.username == username_email).first()
+            if check_password_hash(user.hash, password):
+                # Remember which user has logged in
+                session["user_id"] = user.id
+                print("User logged in: " + str(session["user_id"]))
                 return redirect('/')
             else:
                 return apology("Invalid password", 403)
@@ -100,11 +116,18 @@ def signin():
         return render_template('signin.html')
 
 
+@app.route('/signout')
+def signout():
+    # Forget any user_id
+    session.clear()
+
+    return redirect('/')
+
+
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
-    # TODO
     # Forget any user_id
-    # session.clear()
+    session.clear()
 
     if request.method == 'POST':
         # Ensuring of user input is given by field setup
@@ -136,6 +159,18 @@ def signup():
         return redirect('/')
     else:
         return render_template('signup.html')
+
+
+def errorhandler(e):
+    """Handle error"""
+    if not isinstance(e, HTTPException):
+        e = InternalServerError()
+    return apology(e.name, e.code)
+
+
+# Listen for errors
+for code in default_exceptions:
+    app.errorhandler(code)(errorhandler)
 
 
 if __name__ == '__main__':
