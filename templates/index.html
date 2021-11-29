@@ -1,15 +1,15 @@
 {% extends "layout.html" %} {% block title %} Dashboard {% endblock %} {% block
 main %}
-<div class="containter">
+<!-- <div class="containter">
   <img
     src="../static/images/logo.png"
     alt="PC-logo"
     width="30px"
     class="logo"
   />
-  <!-- {% if message %}
+   {% if message %}
         <p class="message">{{message | safe}}</p>
-        {% endif %} -->
+        {% endif %} 
   <form action="/submit" method="POST">
     <div class="form-group">
       <h3>Customer Name</h3>
@@ -41,5 +41,37 @@ main %}
     <button class="btn btn-primary" type="submit">Submit</button>
   </form>
 </div>
-<a href="/frontpage" class="btn btn">Curves</a>
+<a href="/frontpage" class="btn btn">Curves</a> -->
+
+<!-- START INDEX PAGE -->
+<div class="container mx-auto mt-8 flex flex-col items-center justify-center">
+  <div class="clock">
+    <div class="hour">
+      <div class="hr" id="hr"></div>
+    </div>
+    <div class="min">
+      <div class="mn" id="mn"></div>
+    </div>
+    <div class="sec">
+      <div class="sc" id="sc"></div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    const deg = 6;
+    const hr = document.querySelector("#hr");
+    const mn = document.querySelector("#mn");
+    const sc = document.querySelector("#sc");
+
+    setInterval(() => {
+      let day = new Date();
+      let hh = day.getHours() * 30;
+      let mm = day.getMinutes() * deg;
+      let ss = day.getSeconds() * deg;
+
+      hr.style.transform = `rotateZ(${hh + mm / 12}deg)`;
+      mn.style.transform = `rotateZ(${mm}deg)`;
+      sc.style.transform = `rotateZ(${ss}deg)`;
+    });
+  </script>
+</div>
 {% endblock %}
