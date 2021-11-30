@@ -76,11 +76,20 @@ footer {
 #footer-link {
   text-decoration: underline;
 }
+#stats-dashboard {
+  border: 5px solid #000;
+}
+.other-stats {
+  border: 5px solid #000;
+  width: 350px;
+  height: 350px;
+}
 .clock {
   /* necessary? */
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  border: 5px solid #000;
   /* .clock */
   width: 350px;
   height: 350px;
@@ -160,3 +169,11 @@ footer {
   z-index: 12;
   border-radius: 6px 6px 0 0;
 }
+/*
+.stats {
+  width: 500px;
+  height: 500px;
+}
+* {
+  border: 5px solid #000;
+}*/

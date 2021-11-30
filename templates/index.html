@@ -44,7 +44,10 @@ main %}
 <a href="/frontpage" class="btn btn">Curves</a> -->
 
 <!-- START INDEX PAGE -->
-<div class="container mx-auto mt-8 flex flex-col items-center justify-center">
+<div
+  class="container mx-auto mt-8 flex items-center justify-around"
+  id="stats-dashboard"
+>
   <div class="clock">
     <div class="hour">
       <div class="hr" id="hr"></div>
@@ -56,6 +59,48 @@ main %}
       <div class="sc" id="sc"></div>
     </div>
   </div>
+  <div class="other-stats">
+    <div class="weather"></div>
+  </div>
+  <script id="weather">
+    /* For whatever reason I can't use 'location' and have to use city because else I get "Uncaught SyntaxError: Identifier 'location' has already been declared". I haven't used 'location' anywhere else in my file...Ok, after avoiding this error, I found out that the JSON response already has "location" in it. But I couldn't know... */
+    const apiData = {
+      url: "http://api.weatherapi.com/v1",
+      type: "current.json",
+      key: "40cd513af8aa446484a92837213011",
+      city: "London",
+    };
+
+    const { url, type, key, city } = apiData;
+
+    const apiUrl = `${url}/${type}?key=${key}&q=${city}`;
+
+    console.log(apiUrl);
+
+    fetch(apiUrl)
+      .then((data) => {
+        if (data.ok) {
+          return data.json();
+        }
+        throw new Error("Response not ok.");
+      })
+      .then((locationRequest) => generateHtml(locationRequest))
+      .catch((error) => console.error("Error:", error));
+
+    const generateHtml = (data) => {
+      console.log(data);
+      console.log(`${data.location.name}`);
+      const html = `
+        <div class="weather-location">${data.location.name},${data.location.country}</div>
+        <div class="details">
+            <span>Tmp: ${data.current.temp_c} °C</span>
+            <span>Feels like: ${data.current.feelslike_c} °C</span>
+        </div>
+    `;
+      const weatherDiv = document.querySelector(".weather");
+      weatherDiv.innerHTML = html;
+    };
+  </script>
   <script type="text/javascript">
     const deg = 6;
     const hr = document.querySelector("#hr");
