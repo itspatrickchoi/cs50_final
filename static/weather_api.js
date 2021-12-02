@@ -97,9 +97,7 @@ const displayCities = (cities) => {
         .map((city) => {
             return `
             <li class="character">
-                <h2>${city.location.name}</h2>
-                <p>Temperature: ${city.current.temp_c} °C</p>
-                <p>Feels like:${city.current.feelslike_c} °C></p>
+                <p>${city.name}</p>
             </li>
         `;
         })
