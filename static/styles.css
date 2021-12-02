@@ -91,8 +91,8 @@ footer {
   box-sizing: border-box;
   border: 5px solid #000;
   /* .clock */
-  width: 350px;
-  height: 350px;
+  width: 175px;
+  height: 175px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -107,8 +107,8 @@ footer {
 .clock:before {
   content: "";
   position: absolute;
-  width: 15px;
-  height: 15px;
+  width: 7.5px;
+  height: 7.5px;
   background: #000;
   border-radius: 50%;
   z-index: 10000;
@@ -120,18 +120,18 @@ footer {
 }
 .clock .hour,
 .hr {
-  width: 160px;
-  height: 160px;
+  width: 80px;
+  height: 80px;
 }
 .clock .min,
 .mn {
-  width: 190px;
-  height: 190px;
+  width: 95px;
+  height: 95px;
 }
 .clock .sec,
 .sc {
-  width: 230px;
-  height: 230px;
+  width: 115px;
+  height: 115px;
 }
 .hr,
 .mn,
@@ -145,8 +145,8 @@ footer {
 .hr:before {
   content: "";
   position: absolute;
-  width: 8px;
-  height: 80px;
+  width: 4px;
+  height: 40px;
   background: #ff105e;
   z-index: 10;
   border-radius: 6px 6px 0 0;
@@ -154,8 +154,8 @@ footer {
 .mn:before {
   content: "";
   position: absolute;
-  width: 4px;
-  height: 90px;
+  width: 2px;
+  height: 45px;
   background: #000;
   z-index: 11;
   border-radius: 6px 6px 0 0;
@@ -163,8 +163,8 @@ footer {
 .sc:before {
   content: "";
   position: absolute;
-  width: 2px;
-  height: 150px;
+  width: 1px;
+  height: 75px;
   background: #000;
   z-index: 12;
   border-radius: 6px 6px 0 0;
@@ -177,3 +177,6 @@ footer {
 * {
   border: 5px solid #000;
 }*/
+.weather-location {
+  font-size: larger;
+}
