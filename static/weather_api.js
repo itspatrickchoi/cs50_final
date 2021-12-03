@@ -39,11 +39,13 @@ console.log(apiUrl);
    console.log("data.location.name:")
    console.log(`${data.location.name}`);
    const html = `
+   <div class="location-and-details">
      <div class="weather-location">
         <h1>${data.location.name}, ${data.location.country}</h1></div>
      <div class="details">
          <span>Tmp: ${data.current.temp_c} °C</span>
          <span>Feels like: ${data.current.feelslike_c} °C</span>
+     </div>
      </div>
  `;
    const weatherDiv = document.querySelector(".weather");
@@ -65,6 +67,7 @@ searchBar.addEventListener('keyup', (e) => {
     console.log("usercity:");
     console.log(userCity);
     const filteredCities = cities.filter((city) => {
+        console.log(city.name.toLowerCase().includes(userCity));
         return (
             city.name.toLowerCase().includes(userCity) ||
             city.region.toLowerCase().includes(userCity) ||
@@ -86,7 +89,7 @@ const loadCities = async () => {
         cities = await res.json();
         console.log("cities:");
         console.log(cities);
-        displayCities(cities);
+        // displayCities(cities);
     } catch (err) {
         console.error(err);
     }
@@ -96,7 +99,7 @@ const displayCities = (cities) => {
     let htmlString = cities
         .map((city) => {
             return `
-            <li class="character">
+            <li class="city-list px-4 py-1 my-2 mx-1">
                 <p>${city.name}</p>
             </li>
         `;
@@ -104,5 +107,17 @@ const displayCities = (cities) => {
         .join('');
     citiesList.innerHTML = htmlString;
 };
+
+// const optionsCities = document.querySelector(".city-list");
+
+// optionsCities.addEventListener("click", () => {
+//     currentType = "current.json";
+//     const selectedCity = document.querySelector(".city-list");
+//     userCity = selectedCity.innerHTML;
+//     apiUrl = `${url}/${currentType}?key=${key}&q=${userCity}`;
+//     fetch(apiUrl);
+// })
+
+
 
 loadCities();

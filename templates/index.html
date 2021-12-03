@@ -46,7 +46,7 @@ main %}
 <!-- START INDEX PAGE -->
 <div
   class="container mx-auto mt-8 flex items-center justify-around"
-  id="stats-dashboard"
+  id="time-weather-box"
 >
   <div class="clock">
     <div class="hour">
@@ -59,7 +59,7 @@ main %}
       <div class="sc" id="sc"></div>
     </div>
   </div>
-  <div class="other-stats">
+  <div class="weather-box">
     <div class="weather-search">
       <input type="text" id="weather-searchbar" placeholder="Your city"></input>
       <ul id="weather-cities"></ul>
@@ -68,5 +68,12 @@ main %}
   </div>
   <script src="../static/weather_api.js"></script>
   <script type="text/javascript" src="../static/clock.js"></script>
+</div>
+
+<div
+  class="container mx-auto mt-8 flex items-center justify-around"
+  id="focus-tasks-box"
+>
+
 </div>
 {% endblock %}
