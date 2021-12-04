@@ -215,3 +215,9 @@ footer {
 
   /* display: none; */
 }
+#focus-tasks-box {
+  border: 5px solid #000;
+}
+.task-box {
+  border: 5px solid #000;
+}
