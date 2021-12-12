@@ -76,13 +76,23 @@ main %}
 >
 <!-- See BuJo for plan on focus-tasks-box section -->
   <div class="task-box" id="plan-month">
-    hi, here will be the plan for {month} {year}
+    <h3 class="task-box-header">PLAN FOR {{ month }} {{ year }}</h3>
+    <div class="container tasks">
+      <div class="task-item mx-2 px-3 py-3">hi, here will be the plan for {{month}} {{year}}</div>
+    </div>
   </div>
   <div class="task-box" id="focus-day">
-    hello, here are your 3 foci of the day
+    <h3 class="task-box-header">YOUR <span class="task-count"></span> <span class="focus-foci"></span> FOR THE DAY</h3>
+    <div class="container tasks">
+      <div class="task-item mx-2 px-3 py-3">hello, here are your 3 foci of the day</div>
+  </div>
   </div>
   <div class="task-box" id="tasks-day">
-    hola, here are all your tasks for the day
+    <h3 class="task-box-header">ALL YOUR TASKS FOR -----</h3>
+    <div class="container tasks">
+      <div class="task-item mx-2 px-3 py-3">hola, here are all your tasks for the day</div>
+  </div>
   </div>
 </div>
+<script src="../static/task_dashboard.js"></script>
 {% endblock %}

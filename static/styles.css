@@ -220,4 +220,17 @@ footer {
 }
 .task-box {
   border: 5px solid #000;
+  min-height: 400px;
+  min-width: 300px;
+}
+.task-box-header {
+  font-size: large;
+  font-weight: bold;
+}
+.task-item {
+  /* Nue/white/1 */
+
+  background: #f0f0f3;
+  box-shadow: -1px -1px 3px #ffffff, 1.5px 1.5px 3px rgba(174, 174, 192, 0.4);
+  border-radius: 5px;
 }

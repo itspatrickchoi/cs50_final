@@ -6,6 +6,8 @@ from helpers import apology, login_required, success
 from werkzeug.security import check_password_hash, generate_password_hash
 from werkzeug.exceptions import default_exceptions, HTTPException, InternalServerError
 
+from datetime import datetime
+
 app = Flask(__name__)
 
 ENV = 'dev'
@@ -49,7 +51,16 @@ def index():
     if request.method == 'POST':
         return apology("How did you do that??", 400)
     else:
-        return render_template('index.html')
+        # datetime object containing current date and time
+        now = datetime.now()
+        print("now =", now)
+        dt_month = now.strftime('%B')
+        print("dt_month = ", dt_month)
+        dt_day = now.strftime('%d')
+        print("dt_day = ", dt_day)
+        dt_year = now.strftime('%Y')
+        print("dt_year = ", dt_year)
+        return render_template('index.html', month=dt_month.upper(), day=dt_day, year=dt_year)
 
 
 @app.route('/frontpage')
