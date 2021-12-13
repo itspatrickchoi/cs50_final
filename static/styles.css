@@ -77,7 +77,12 @@ footer {
   text-decoration: underline;
 }
 #time-weather-box {
-  border: 5px solid #000;
+  /* Nue/white/2 */
+
+  background: #eeeeee;
+  box-shadow: inset -1px -1px 1px rgba(255, 255, 255, 0.7),
+    inset 1.5px 1.5px 1px rgba(174, 174, 192, 0.2);
+  border-radius: 5px;
 }
 
 .clock {
@@ -174,7 +179,10 @@ footer {
   border: 5px solid #000;
 }*/
 .weather-box {
-  border: 5px solid #000;
+  /* Nue/white/1 */
+  box-shadow: -1px -1px 3px #ffffff, 1.5px 1.5px 2px rgba(174, 174, 192, 0.4);
+  border-radius: 5px;
+
   width: 350px;
   height: 350px;
   position: relative;
@@ -186,7 +194,7 @@ footer {
 }
 .weather {
   position: absolute;
-  top: 30px;
+  top: 50px;
   z-index: -1;
   /* border: 1px solid #000; */
 }
@@ -197,6 +205,8 @@ footer {
   /* parent of .city-list */
   height: 300px;
   overflow-y: scroll;
+
+  z-index: 10;
 
   -ms-overflow-style: none; /* Internet Explorer 10+ */
   scrollbar-width: none; /* Firefox */
@@ -216,12 +226,20 @@ footer {
   /* display: none; */
 }
 #focus-tasks-box {
-  border: 5px solid #000;
+  /* border: 1px solid #000; */
 }
 .task-box {
-  border: 5px solid #000;
+  /* Nue/white/1 */
+
+  background: #f0f0f3;
+  box-shadow: -1px -1px 3px #ffffff, 1.5px 1.5px 2px rgba(174, 174, 192, 0.4);
+  border-radius: 5px;
+
   min-height: 400px;
   min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .task-box-header {
   font-size: large;
@@ -230,6 +248,18 @@ footer {
 .task-item {
   /* Nue/white/1 */
 
+  background: #f0f0f3;
+  box-shadow: -1px -1px 3px #ffffff, 1.5px 1.5px 3px rgba(174, 174, 192, 0.4);
+  border-radius: 5px;
+}
+.input {
+  box-shadow: -1px -1px 3px #ffffff, 1.5px 1.5px 3px rgba(174, 174, 192, 0.4);
+  border-radius: 5px;
+}
+.task-button {
+  /* Nue/white/1 */
+  width: 30px;
+  height: 30px;
   background: #f0f0f3;
   box-shadow: -1px -1px 3px #ffffff, 1.5px 1.5px 3px rgba(174, 174, 192, 0.4);
   border-radius: 5px;

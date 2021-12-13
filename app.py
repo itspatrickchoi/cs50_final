@@ -37,12 +37,29 @@ class Users(db.Model):
     email = db.Column(db.String(200), unique=True)
     hash = db.Column(db.String(200), unique=True)
     score = db.Column(db.Integer, default=1000)
+    # https: // blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iv-database
+    monthly_plans = db.relationship(
+        'MonthlyPlan', backref='author', lazy='dynamic')
 
     def __init__(self, username, email, hash, score):
         self.username = username
         self.email = email
         self.hash = hash
         self.score = score
+
+
+class MonthlyPlan(db.Model):
+    __tablename__ = 'monthly_plan'
+    id = db.Column(db.Integer, primary_key=TRUE)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    plan_item = db.Column(db.String(200))
+    date_created = db.Column(db.DateTime, index=True)
+    # https: // blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iv-database
+
+    def __init__(self, user_id, plan_item, date_created):
+        self.user_id = user_id
+        self.plan_item = plan_item
+        self.date_created = date_created
 
 
 @ app.route('/')
