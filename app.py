@@ -50,7 +50,7 @@ class Users(db.Model):
 
 class MonthlyPlan(db.Model):
     __tablename__ = 'monthly_plan'
-    id = db.Column(db.Integer, primary_key=TRUE)
+    id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     plan_item = db.Column(db.String(200))
     date_created = db.Column(db.DateTime, index=True)
@@ -66,6 +66,7 @@ class MonthlyPlan(db.Model):
 @login_required
 def index():
     if request.method == 'POST':
+        print("TEEEESTTT!!!")
         return apology("How did you do that??", 400)
     else:
         # datetime object containing current date and time
