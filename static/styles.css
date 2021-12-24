@@ -225,9 +225,9 @@ footer {
 
   /* display: none; */
 }
-#focus-tasks-box {
-  /* border: 1px solid #000; */
-}
+/* #focus-tasks-box {
+  border: 1px solid #000; 
+}*/
 .task-box {
   /* Nue/white/1 */
 
@@ -256,11 +256,30 @@ footer {
   box-shadow: -1px -1px 3px #ffffff, 1.5px 1.5px 3px rgba(174, 174, 192, 0.4);
   border-radius: 5px;
 }
-.task-button {
+.task-container {
+  display: flex;
+  align-items: center;
   /* Nue/white/1 */
-  width: 30px;
-  height: 30px;
   background: #f0f0f3;
   box-shadow: -1px -1px 3px #ffffff, 1.5px 1.5px 3px rgba(174, 174, 192, 0.4);
   border-radius: 5px;
+}
+.task-container:hover {
+  background-color: #ff105e;
+}
+.task-container:hover > #delete-task {
+  /* Nice, somehow guessed correctly, so when hover on task-container, only color of #delete-task affected */
+  color: #f0f0f3;
+}
+#add-task {
+  width: 30px;
+  height: 30px;
+  /* Nue/white/1 */
+  background: #f0f0f3;
+  box-shadow: -1px -1px 3px #ffffff, 1.5px 1.5px 3px rgba(174, 174, 192, 0.4);
+  border-radius: 5px;
+}
+#add-task:hover {
+  background-color: rgb(22, 182, 22);
+  color: #f0f0f3;
 }

@@ -62,7 +62,7 @@ class MonthlyPlan(db.Model):
         self.date_created = date_created
 
 
-@ app.route('/')
+@ app.route('/', methods=['GET', 'POST'])
 @login_required
 def index():
     if request.method == 'POST':
