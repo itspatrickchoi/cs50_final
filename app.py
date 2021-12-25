@@ -56,6 +56,8 @@ class MonthlyPlan(db.Model):
     date_created = db.Column(db.DateTime, index=True)
     # https: // blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iv-database
 
+    # make sure that in pgadmin4 id is set to "Type: IDENTITY; BY DEFAULT, Increment: 1",..
+    # so that when adding a new row to the db, the id is autoincremented/autofilled
     def __init__(self, user_id, plan_item, date_created):
         self.user_id = user_id
         self.plan_item = plan_item
@@ -67,6 +69,20 @@ class MonthlyPlan(db.Model):
 def index():
     if request.method == 'POST':
         print("TEEEESTTT!!!")
+        print(request.form['add-task-in-1'])
+        print(request.form['add-task-in-2'])
+        if request.form['add-task-in-1']:
+            print("first box input!")
+            input1 = request.form['add-task-in-1']
+            data = MonthlyPlan(session["user_id"], input1, datetime.now())
+            db.session.add(data)
+            db.session.commit()
+            print("DONE!")
+        elif request.form['add-task-in-2']:
+            print("second box input!")
+        else:
+            print("No input!")
+
         return apology("How did you do that??", 400)
     else:
         # datetime object containing current date and time
