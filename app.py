@@ -74,7 +74,8 @@ def index():
         if request.form['add-task-in-1']:
             print("first box input!")
             input1 = request.form['add-task-in-1']
-            data = MonthlyPlan(session["user_id"], input1, datetime.now())
+            data = MonthlyPlan(
+                session["user_id"], input1, datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
             db.session.add(data)
             db.session.commit()
             print("DONE!")
@@ -83,7 +84,7 @@ def index():
         else:
             print("No input!")
 
-        return apology("How did you do that??", 400)
+        return redirect("/")
     else:
         # datetime object containing current date and time
         now = datetime.now()
@@ -94,7 +95,11 @@ def index():
         print("dt_day = ", dt_day)
         dt_year = now.strftime('%Y')
         print("dt_year = ", dt_year)
-        return render_template('index.html', month=dt_month.upper(), day=dt_day, year=dt_year)
+
+        monthly_plan = db.session.query(MonthlyPlan).filter(
+            MonthlyPlan.user_id == session["user_id"]).all()
+        print(monthly_plan)
+        return render_template('index.html', month=dt_month.upper(), day=dt_day, year=dt_year, monthly_plan=monthly_plan)
 
 
 @app.route('/frontpage')

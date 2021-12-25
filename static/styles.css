@@ -251,6 +251,9 @@ footer {
   background: #f0f0f3;
   box-shadow: -1px -1px 3px #ffffff, 1.5px 1.5px 3px rgba(174, 174, 192, 0.4);
   border-radius: 5px;
+
+  /* Try make item bigger if enough space such that delete button not so big */
+  flex: auto;
 }
 .input {
   box-shadow: -1px -1px 3px #ffffff, 1.5px 1.5px 3px rgba(174, 174, 192, 0.4);

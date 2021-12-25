@@ -81,15 +81,16 @@ main %}
         <h3 class="task-box-header mt-2">PLAN FOR {{ month }} {{ year }}</h3>
       </div>
       <div class="container tasks mt-3">
-        <div class="task-container mx-2 ">
-          <div class="task-item mx-2 px-3 py-3">hi, here will be the plan for {{month}} {{year}}</div>
+        {% for plan in monthly_plan %}
+        <div class="task-container mx-2 my-2">
+          <div class="task-item mx-2 px-3 py-3">{{ plan.plan_item }}}</div>
           <button type="submit" value="this-exact-task!-See flaskcrud task app" class="task-button pr-2" id="delete-task">-</button>
-        </div>  
+        </div>
+        {% endfor %}  
       </div>
       <div class="task-box-input-container">
         <input type="text" name="add-task-in-1" class="input mx-2 my-2 px-3 py-2" placeholder="What will it be?"></input>
         <button type="submit" class="task-button" id="add-task">+</button>
-        </form>
       </div>
     </div>
 
