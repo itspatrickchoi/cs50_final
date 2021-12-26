@@ -102,6 +102,18 @@ def index():
         return render_template('index.html', month=dt_month.upper(), day=dt_day, year=dt_year, monthly_plan=monthly_plan)
 
 
+@app.route('/delete/<int:id>')
+@login_required
+def delete(id):
+    task_to_delete = db.session.query(
+        MonthlyPlan).filter(MonthlyPlan.id == id).one()
+    print("Hey, delete here!!")
+    print(task_to_delete)
+    db.session.delete(task_to_delete)
+    db.session.commit()
+    return redirect("/")
+
+
 @app.route('/frontpage')
 def curvaceous():
     return render_template('frontpage.html')

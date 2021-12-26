@@ -83,8 +83,8 @@ main %}
       <div class="container tasks mt-3">
         {% for plan in monthly_plan %}
         <div class="task-container mx-2 my-2">
-          <div class="task-item mx-2 px-3 py-3">{{ plan.plan_item }}}</div>
-          <button type="submit" value="this-exact-task!-See flaskcrud task app" class="task-button pr-2" id="delete-task">-</button>
+          <div class="task-item mx-2 px-3 py-3">{{ plan.plan_item }}</div>
+          <a href="/delete/{{ plan.id }}"><button class="task-button pr-2" id="delete-task">-</button></a>
         </div>
         {% endfor %}  
       </div>
