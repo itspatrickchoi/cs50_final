@@ -25,3 +25,23 @@
 - (bootstrap)
 - Figma
 - ...
+
+## Fun Facts
+
+### Lines of code? Probably 1000+
+
+- 53+304+11+110+94+119+164+220+55+15+12+123+307=1587
+- The signin/signup/success HTML files have used especially many more lines than technically needed because of formatting
+- So deduct around 135 lines
+- There are inevitably also some empty lines and several comments
+- Approx. no. of lines: **1000+**
+
+### What did I learn?
+
+#### Patience
+
+The CS50 course was a long and challenging journey which took me countless hours. But I persevered and continued. I doubt even half of the people who started the course actually finished it. In the end, it was a fruitful experience that let me learn a lot. So takeaway? Good things take time.
+
+#### Growth Mindset
+
+Closely linked to patience is the incredible progress you see throughout the journey and thus the improvement potential one can possess. It is honestly crazy for me to think I started with just building simple Super Mario staircase blocks in a certain constellation through algorithms, and progressed to building image filters from scratch over to playing detective investigating a crime with SQL over to building a full-stack web application letting people buy/sell virtual stocks with real-time prices. It just goes to show what one can achieve if one commits to improving. Growth mindset ftw!

@@ -7,6 +7,11 @@ body {
   text-align: center;
 }
 
+main {
+  /* Testing background change...doesn't work? */
+  background-image: url("/images/snowy_mountains.jpg");
+}
+
 section {
   position: relative;
   display: flex;
@@ -195,7 +200,7 @@ footer {
 .weather {
   position: absolute;
   top: 50px;
-  z-index: -1;
+  z-index: 0;
   /* border: 1px solid #000; */
 }
 .weather-location {
@@ -224,6 +229,9 @@ footer {
   z-index: 10;
 
   /* display: none; */
+}
+#weather-searchbar:focus .weather {
+  z-index: -1;
 }
 /* #focus-tasks-box {
   border: 1px solid #000; 
@@ -256,9 +264,16 @@ footer {
   /* Try make item bigger if enough space such that delete button not so big */
   flex: auto;
 }
+.task-box-input-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .input {
   box-shadow: -1px -1px 3px #ffffff, 1.5px 1.5px 3px rgba(174, 174, 192, 0.4);
   border-radius: 5px;
+
+  flex: auto;
 }
 .task-container {
   display: flex;
