@@ -240,6 +240,7 @@ footer {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  flex: auto;
 }
 .task-box-header {
   font-size: large;
@@ -270,8 +271,11 @@ footer {
 .task-container:hover {
   background-color: #ff105e;
 }
-.task-container:hover > #delete-task {
-  /* Nice, somehow guessed correctly, so when hover on task-container, only color of #delete-task affected */
+.task-container:hover .delete-task {
+  /* Nice, somehow guessed correctly, so with ">" in-between, then when hover on task-container, only color of #delete-task affected (from grey to white) */
+  /* Ok, but seems that for elements inside flask populated items it doesn't work... */
+  /* Aha, now with those flask changes (what exactly?) U have to use " ", so instead of child selector (>) I use descendant selector. */
+  /* https://www.w3schools.com/CSS/css_combinators.asp */
   color: #f0f0f3;
 }
 #add-task {

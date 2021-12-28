@@ -76,15 +76,16 @@ main %}
     id="focus-tasks-box"
   >
   <!-- See BuJo for plan on focus-tasks-box section -->
-    <div class="task-box" id="plan-month">
+    <!-- MONTHLY PLAN -->
+    <div class="task-box mx-3" id="plan-month">
       <div class="task-box-header-container">
         <h3 class="task-box-header mt-2">PLAN FOR {{ month }} {{ year }}</h3>
       </div>
-      <div class="container tasks mt-3">
+      <div class="container mt-3">
         {% for plan in monthly_plan %}
         <div class="task-container mx-2 my-2">
           <div class="task-item mx-2 px-3 py-3">{{ plan.plan_item }}</div>
-          <a href="/delete/{{ plan.id }}"><button class="task-button pr-2" id="delete-task">-</button></a>
+          <a href="/delete/{{ plan.id }}"><div class="task-button delete-task pr-2">-</div></a>
         </div>
         {% endfor %}  
       </div>
@@ -94,15 +95,18 @@ main %}
       </div>
     </div>
 
-    <div class="task-box" id="focus-day">
+    <!-- DAILY FOCI -->
+    <div class="task-box mx-3" id="focus-day">
       <div class="task-box-header-container">
         <h3 class="task-box-header mt-2">YOUR <span class="task-count"></span> <span class="focus-foci"></span> FOR THE DAY</h3>
       </div>
-      <div class="container tasks mt-3">
+      <div class="container foci mt-3">
+        {% for focus in daily_foci %}
         <div class="task-container mx-2 ">
-          <div class="task-item mx-2 px-3 py-3">hello, here are your 3 foci of the day</div>
-          <button type="submit" class="task-button pr-2" id="delete-task">-</button>
-        </div>  
+          <div class="task-item mx-2 px-3 py-3">{{ focus.focus_item }}</div>
+          <a href="/delete/{{ focus.id }}"><div class="task-button delete-task pr-2">-</div></a>
+        </div> 
+        {% endfor %} 
       </div>
     <div class="task-box-input-container">
         <input type="text" name="add-task-in-2" class="input mx-2 my-2 px-3 py-2" placeholder="What will it be?"></input>
@@ -110,18 +114,21 @@ main %}
     </div>
     </div>
 
-    <div class="task-box" id="tasks-day">
+    <!-- ALL TASKS -->
+    <div class="task-box mx-3" id="tasks-day">
       <div class="task-box-header-container">
-        <h3 class="task-box-header mt-2">ALL YOUR TASKS FOR -----</h3>
+        <h3 class="task-box-header mt-2">ALL YOUR TASKS</h3>
       </div>
-      <div class="container tasks mt-3">
+      <div class="container mt-3">
+        {% for task in all_tasks %}
         <div class="task-container mx-2 ">
-          <div class="task-item mx-2 px-3 py-3">hola, here are all your tasks for the day</div>
-          <button type="submit" class="task-button pr-2" id="delete-task">-</button>
+          <div class="task-item mx-2 px-3 py-3">{{ task.task_item }}</div>
+          <a href="/delete/{{ task.id }}"><div class="task-button delete-task pr-2">-</div></a>
         </div>
+        {% endfor %}
       </div>
       <div class="task-box-input-container">
-        <input type="text" class="input mx-2 my-2 px-3 py-2" placeholder="What will it be?"></input>
+        <input type="text" name="add-task-in-3" class="input mx-2 my-2 px-3 py-2" placeholder="What will it be?"></input>
         <button type="submit" class="task-button" id="add-task">+</button>
       </div>
     </div>

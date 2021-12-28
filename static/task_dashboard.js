@@ -1,4 +1,4 @@
-let itemCount = document.querySelector(".tasks").childElementCount;
+let itemCount = document.querySelector(".foci").childElementCount;
 let focusFoci = document.querySelector(".focus-foci");
 let taskCount = document.querySelector(".task-count");
 if (itemCount != 0) {

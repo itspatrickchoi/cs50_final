@@ -40,6 +40,10 @@ class Users(db.Model):
     # https: // blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iv-database
     monthly_plans = db.relationship(
         'MonthlyPlan', backref='author', lazy='dynamic')
+    daily_plans = db.relationship(
+        'DailyFoci', backref='author', lazy='dynamic')
+    all_tasks = db.relationship(
+        'AllTasks', backref='author', lazy='dynamic')
 
     def __init__(self, username, email, hash, score):
         self.username = username
@@ -64,25 +68,73 @@ class MonthlyPlan(db.Model):
         self.date_created = date_created
 
 
+class DailyFoci(db.Model):
+    __tablename__ = 'daily_foci'
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    focus_item = db.Column(db.String(200))
+    date_created = db.Column(db.DateTime, index=True)
+
+    def __init__(self, user_id, focus_item, date_created):
+        self.user_id = user_id
+        self.focus_item = focus_item
+        self.date_created = date_created
+
+
+class AllTasks(db.Model):
+    __tablename__ = 'all_tasks'
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    task_item = db.Column(db.String(200))
+    date_created = db.Column(db.DateTime, index=True)
+
+    def __init__(self, user_id, task_item, date_created):
+        self.user_id = user_id
+        self.task_item = task_item
+        self.date_created = date_created
+
+
 @ app.route('/', methods=['GET', 'POST'])
 @login_required
 def index():
     if request.method == 'POST':
         print("TEEEESTTT!!!")
-        print(request.form['add-task-in-1'])
-        print(request.form['add-task-in-2'])
+
+        # MONTHLY PLAN: 'add-task-in-1'
         if request.form['add-task-in-1']:
             print("first box input!")
+            print(request.form['add-task-in-1'])
             input1 = request.form['add-task-in-1']
             data = MonthlyPlan(
                 session["user_id"], input1, datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
             db.session.add(data)
             db.session.commit()
             print("DONE!")
+
+        # DAILY FOCI: 'add-task-in-2'
         elif request.form['add-task-in-2']:
             print("second box input!")
+            print(request.form['add-task-in-2'])
+            input2 = request.form['add-task-in-2']
+            data = DailyFoci(
+                session["user_id"], input2, datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
+            db.session.add(data)
+            db.session.commit()
+            print("DONE!")
+
+        # ALL TASKS: 'add-task-in-3'
+        elif request.form['add-task-in-3']:
+            print("third box input!")
+            print(request.form['add-task-in-3'])
+            input3 = request.form['add-task-in-3']
+            data = AllTasks(
+                session["user_id"], input3, datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
+            db.session.add(data)
+            db.session.commit()
+            print("DONE!")
         else:
             print("No input!")
+            alert("No input!")
 
         return redirect("/")
     else:
@@ -99,12 +151,25 @@ def index():
         monthly_plan = db.session.query(MonthlyPlan).filter(
             MonthlyPlan.user_id == session["user_id"]).all()
         print(monthly_plan)
-        return render_template('index.html', month=dt_month.upper(), day=dt_day, year=dt_year, monthly_plan=monthly_plan)
+
+        daily_foci = db.session.query(DailyFoci).filter(
+            DailyFoci.user_id == session["user_id"]).all()
+        print(daily_foci)
+
+        all_tasks = db.session.query(AllTasks).filter(
+            AllTasks.user_id == session["user_id"]).all()
+        print(all_tasks)
+
+        return render_template('index.html', month=dt_month.upper(), day=dt_day, year=dt_year, monthly_plan=monthly_plan, daily_foci=daily_foci, all_tasks=all_tasks)
 
 
 @app.route('/delete/<int:id>')
 @login_required
 def delete(id):
+    # To successfully let this route be triggered, the delete button must not be a button html element but e.g. a link/a HTML element
+    # Otherwise the delete route won't be triggered unless you click with the middle mouse scroll button to open in a new tab
+    # Reason is probably because the button element will trigger the form HTML element first and foremost which triggers the "/" route
+    print("does this happen??")
     task_to_delete = db.session.query(
         MonthlyPlan).filter(MonthlyPlan.id == id).one()
     print("Hey, delete here!!")
