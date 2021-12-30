@@ -163,16 +163,39 @@ def index():
         return render_template('index.html', month=dt_month.upper(), day=dt_day, year=dt_year, monthly_plan=monthly_plan, daily_foci=daily_foci, all_tasks=all_tasks)
 
 
-@app.route('/delete/<int:id>')
+@app.route('/delete/1/<int:id>')
 @login_required
-def delete(id):
+def delete1(id):
     # To successfully let this route be triggered, the delete button must not be a button html element but e.g. a link/a HTML element
     # Otherwise the delete route won't be triggered unless you click with the middle mouse scroll button to open in a new tab
     # Reason is probably because the button element will trigger the form HTML element first and foremost which triggers the "/" route
-    print("does this happen??")
     task_to_delete = db.session.query(
         MonthlyPlan).filter(MonthlyPlan.id == id).one()
-    print("Hey, delete here!!")
+    print("Hey 1, delete here!!")
+    print(task_to_delete)
+    db.session.delete(task_to_delete)
+    db.session.commit()
+    return redirect("/")
+
+
+@app.route('/delete/2/<int:id>')
+@login_required
+def delete2(id):
+    task_to_delete = db.session.query(
+        DailyFoci).filter(DailyFoci.id == id).one()
+    print("Hey 2, delete here!!")
+    print(task_to_delete)
+    db.session.delete(task_to_delete)
+    db.session.commit()
+    return redirect("/")
+
+
+@app.route('/delete/3/<int:id>')
+@login_required
+def delete3(id):
+    task_to_delete = db.session.query(
+        AllTasks).filter(AllTasks.id == id).one()
+    print("Hey 3, delete here!!")
     print(task_to_delete)
     db.session.delete(task_to_delete)
     db.session.commit()

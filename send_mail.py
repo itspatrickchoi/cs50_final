@@ -7,7 +7,7 @@ def send_mail(username, email, score):
     smtp_server = 'smtp.mailtrap.io'
     login = '7a2a345edc6159'
     password = '1bdd4db40d52d4'
-    message = f"<h3>Welcome! Here are your account details:</h3><ul><li>Your username: {customer}</li><li>Your email: {email}</li><li>Your starting score: {score}</li></ul>"
+    message = f"<h3>Welcome! Here are your account details:</h3><ul><li>Your username: {username}</li><li>Your email: {email}</li><li>Your starting score: {score}</li></ul>"
 
     sender_email = 'email1@example.com'
     receiver_email = 'email2@example.com'

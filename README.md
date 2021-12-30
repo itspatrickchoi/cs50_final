@@ -8,9 +8,15 @@
 
 Since my project is done as a Flask web application, the main structure consists of the app.py with other python files and the template folder which includes HTML files and the static folder which includes images or similar files and also JavaScript files.
 
-- app.py
+- app.py, helper.py
 
-  - backend
+  - Backend, handling data/database, triggering actions, passing along information to the frontend, handling errors, signin, singup, user sessions etc
+
+- templates/
+
+  - layout.html - Base layout for all other HTML files, to keep code slim and partly "automated"
+  - frontpage.html - First page people see when not signed in, tells visitors what the website is about
+  - signin.html, signup.html - Pages where users can sign in when they already signed up once, otherwise they can still sign up
 
 ## Resources
 
@@ -72,6 +78,7 @@ Some of the hard skills I learned:
 - Building a full-stack web application
 - Usage of Flask framework together with Python, PostgreSQL as backend, and HTML, CSS and JavaScript as frontend
 - How to use Visual Studio Code which was a lot tougher than I expected, I had used many other IDEs before like Eclipse, PyCharm, IntelliJ, R Studio, CS50 IDE,...But I had a lot of configuration issues with VSCode on my Windows (I actually basically took a break off CS50 and tried learning how to set up VSCode and then eded up doing The Odin Project for a while which also required me to learn how to operate a Virtual Machine (Linux Xubuntu) and the Terminal. Since with the VM I had a clean state I guess my VSCode was less messed up here.)
+- How to deploy a project to Heroku (making it publicly available) (Haven't deployed this project yet, but I have learned how to do it before)
 - How to use web design frameworks like Bootstrap and Tailwind
 - How to make use of tools like haikei, KUTE.js to incorporate pattern designs and SVGs that can even be animated
 - How to send emails automatically when conditions are met
@@ -87,13 +94,17 @@ Probably there are still things I forgot to mention. Fact is I learned quite som
 
 ### Future updates?
 
+- Deploy on Heroku
 - Theme design change
 - Proper weather display
 - Clock update to also display digital clock
 - Have tags assignable to tasks items
 - Filter view for tasks
 - Display of stats such as streaks of succesfully completed foci
+- Not just have streaks but have an entire point/score system, the better you do, the higher score you get
+- Maybe have a global leaderboard
 - Visualization of stats in e.g. graphs/curves etc
+- Actual email notifications
 - Add minigames like rock-paper-scissors, Tic-Tac-Toe etc
 - ...
 
