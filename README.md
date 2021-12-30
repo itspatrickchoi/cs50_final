@@ -1,8 +1,8 @@
 # My CS50 Final Project: A Productivity Dashboard
 
-## Introduction Video
+## Introduction Video/Demo
 
-- Link:
+- Link: https://youtu.be/wjDFsRIRGtI
 
 ## Code Structure
 
@@ -55,9 +55,10 @@ Since my project is done as a Flask web application, the main structure consists
 - Approx. no. of lines: **1000+**
 - (Edit: Oh, also quite a few lines from the svg files, so surely 1000+)
 
-### File size?
+### How much time did I spend on this?
 
-- lll
+I have begun with CS50 already in 2020 I believe but I had a hiatus, and then I started again sometime in 2021. And based on a tracking app I used **since around August** (now it's end of December), I had then spent at least over **200 hours in the span of 3 months** programming.
+Over **120 hours** of that was spent on the CS50 course. I learned new things outside the project too, after all. But remember **the 120 hours must be just a fraction** since it excludes 8 problem sets out of the 10 problem sets/projects, though granted the last 2-3 projects were the biggest. For the final project I spent around **53 hours**.
 
 ### What did I learn?
 
