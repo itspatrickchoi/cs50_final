@@ -20,6 +20,8 @@ else:
     # production database (Heroku?)
     app.debug = False
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://ioplqedaskodbi:61fd177593ee4f00d8740c13281d2fe6863ad608a1540c18f89ae9198f09860a@ec2-52-213-119-221.eu-west-1.compute.amazonaws.com:5432/d4b1teuvfmnc6t'
+    SQLALCHEMY_DATABASE_URI = os.environ.get(
+        'DATABASE_URL').replace("://", "ql://", 1)
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
